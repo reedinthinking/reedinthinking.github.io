@@ -1,6 +1,23 @@
 <html>
 <script>
-alert(document.cookie);
+function getUrlParms (name) {
+    let tstr = window.location.href;
+    let index = tstr.indexOf('?')
+    let str = tstr.substring(index + 1);
+    let arr = str.split('&');
+    let result = {};
+    arr.forEach((item) => {
+        let a = item.split('=');
+        result[a[0]] = a[1];
+    })
+    return result[name];
+}
+
+alert(getUrlParms(cookie));
 alert(11111111);
 </script>
+<%
+String name=request.getParameter("cookie");
+out.println("接收到:"+name);
+%>
 <html>
